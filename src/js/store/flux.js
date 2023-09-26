@@ -43,7 +43,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			deleteContact: async (id) => {
 				const url = 'https://playground.4geeks.com/apis/fake/contact/' + id;
-				console.log(url);
 				const options = {
 					method: 'DELETE'
 				}
@@ -51,8 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (response.ok) {
 					const data = await response.json();
 					console.log(data);
-					// getActions().getUsers();
-				} else {
+				} else { m
 					console.log('Error', response.status, response.statusText)
 				}
 			}
