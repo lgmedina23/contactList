@@ -3,11 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       titulo: "Hola Mundo",
       users: [],
-      contactSelected: {},
-      demo: [
-        { title: "FIRST", background: "white", initial: "white" },
-        { title: "SECOND", background: "white", initial: "white" },
-      ],
+      addNewContact: true,
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -36,6 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (response.ok) {
           const data = await response.json();
           console.log(data);
+          setStore({ addNewContact: false });
           getActions().getUsers();
         } else {
           console.log("Error", response.status, response.statusText);
@@ -57,6 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       editContact: async (id) => {
         const store = getStore();
+		
         const data = {};
         const url = "https://playground.4geeks.com/apis/fake/contact/" + id;
         const options = {
