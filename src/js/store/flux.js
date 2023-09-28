@@ -48,14 +48,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           const data = await response.json();
           console.log(data);
         } else {
-          m;
           console.log("Error", response.status, response.statusText);
         }
       },
-      editContact: async (id) => {
+      editContact: async (id, data) => {
         const store = getStore();
-		
-        const data = {};
         const url = "https://playground.4geeks.com/apis/fake/contact/" + id;
         const options = {
           method: "PUT",
@@ -65,6 +62,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const response = await fetch(url, options);
         if (response.ok) {
           const data = await response.json();
+          getActions().getUsers();
           console.log(data);
         } else {
           console.log("Error", response.status, response.statusText);
