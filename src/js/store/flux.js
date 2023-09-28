@@ -47,6 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (response.ok) {
           const data = await response.json();
           console.log(data);
+          getActions().getUsers();
         } else {
           console.log("Error", response.status, response.statusText);
         }
